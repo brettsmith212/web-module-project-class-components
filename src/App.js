@@ -46,9 +46,18 @@ class App extends React.Component {
           };
         } else {
           return {
-            item,
+            ...item,
           };
         }
+      }),
+    });
+  };
+
+  handleClearTodos = () => {
+    this.setState({
+      ...this.state,
+      todos: this.state.todos.filter((item) => {
+        return item.completed === false;
       }),
     });
   };
@@ -63,6 +72,7 @@ class App extends React.Component {
           handleAddTodo={this.handleAddTodo}
           handleChange={this.handleChange}
           input={this.state.input}
+          clearTodos={this.handleClearTodos}
         />
       </div>
     );
