@@ -62,6 +62,13 @@ class App extends React.Component {
     });
   };
 
+  handleEnterPress = (e, newTodo) => {
+    console.log("E ", e);
+    if (e.code === "Enter") {
+      this.handleAddTodo(newTodo);
+    }
+  };
+
   render() {
     console.log(this.state.todos);
     return (
@@ -73,6 +80,7 @@ class App extends React.Component {
           handleChange={this.handleChange}
           input={this.state.input}
           clearTodos={this.handleClearTodos}
+          enterPress={this.handleEnterPress}
         />
       </div>
     );

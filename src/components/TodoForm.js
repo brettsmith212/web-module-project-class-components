@@ -10,6 +10,7 @@ class TodoForm extends React.Component {
           type="text"
           name="todo"
           value={this.props.input}
+          onKeyPress={(e) => this.props.enterPress(e, this.props.input)}
         />
         <button onClick={() => this.props.handleAddTodo(this.props.input)}>
           Add Todo
