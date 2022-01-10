@@ -23,6 +23,7 @@ class App extends React.Component {
     this.setState({
       ...this.state,
       todos: [...this.state.todos, newTodo],
+      input: "",
     });
   };
 
@@ -33,13 +34,29 @@ class App extends React.Component {
     });
   };
 
+  handleToggle = (todo) => {
+    this.setState({
+      ...this.state,
+      todos: this.state.todos.map((item) => {
+        if (item.id === todo.id) {
+          return {
+            ...item,
+            completed: !todo.completed,
+          };
+        } else {
+          return {
+            item,
+          };
+        }
+      }),
+    });
+  };
+
   render() {
-    console.log(this.state.input);
-    console.log(this.state.todos);
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoList />
+        <TodoList todos={this.state.todos} handleToggle={this.handleToggle} />
         <TodoForm
           handleAddTodo={this.handleAddTodo}
           handleChange={this.handleChange}

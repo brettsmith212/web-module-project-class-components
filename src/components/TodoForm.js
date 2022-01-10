@@ -9,6 +9,7 @@ class TodoForm extends React.Component {
           onChange={this.props.handleChange}
           type="text"
           name="todo"
+          value={this.props.input}
         />
         <button onClick={() => this.props.handleAddTodo(this.props.input)}>
           Add Todo
